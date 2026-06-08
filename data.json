@@ -273,8 +273,8 @@
       },
       {
         "priority": "High",
-        "action": "Resolve Real-time Identity Resolution cross-domain failure before Refer a Friend launch",
-        "rationale": "Identity Resolution only works in batch, not real-time across domains. The Refer a Friend deployment on June 10 likely depends on real-time unification working correctly. Escalate with R&D if needed."
+        "action": "Resolve Real-time Identity Resolution cross-domain failure",
+        "rationale": "Identity Resolution only works in batch, not real-time across domains (staging website vs quoter page). This is a platform-level gap affecting data quality. Escalate with R&D if needed."
       },
       {
         "priority": "Medium",
