@@ -5,31 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>TD Bank - Customer Success Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f7f4; color: #1a1a1a; }
-        .header { background: #008a00; color: white; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-        .header h1 { font-size: 1.6rem; font-weight: 700; }
+        .header { background: #008a00; color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .header h1 { font-size: 1.5rem; font-weight: 700; }
         .header .meta { font-size: 0.85rem; opacity: 0.9; }
+        .nav { background: #004d00; padding: 0 40px; display: flex; gap: 0; overflow-x: auto; }
+        .nav a { color: rgba(255,255,255,0.8); text-decoration: none; padding: 12px 20px; font-size: 0.85rem; font-weight: 500; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+        .nav a:hover { color: white; background: rgba(255,255,255,0.1); }
+        .nav a.active { color: white; border-bottom-color: #4caf50; background: rgba(255,255,255,0.05); }
         .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
-        .section { margin-bottom: 32px; }
-        .section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 3px solid #008a00; color: #1a1a1a; }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-        .news-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #008a00; transition: transform 0.2s; }
-        .news-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .news-card h3 { font-size: 0.95rem; margin-bottom: 8px; line-height: 1.4; }
-        .news-card a { color: #006400; text-decoration: none; font-weight: 500; }
-        .news-card a:hover { text-decoration: underline; color: #008a00; }
-        .news-card .source { font-size: 0.75rem; color: #666; margin-top: 8px; }
+
+        /* Home page */
+        .chart-container { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 24px; }
+        .chart-container h2 { font-size: 1.1rem; margin-bottom: 16px; color: #333; }
+        .chart-wrapper { position: relative; height: 320px; }
+        .org-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+        .org-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #008a00; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .org-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .org-card h3 { font-size: 0.95rem; margin-bottom: 8px; color: #1a1a1a; }
+        .org-card .stats { display: flex; gap: 16px; font-size: 0.8rem; color: #555; }
+        .org-card .stat { display: flex; align-items: center; gap: 4px; }
+        .org-card .stat-number { font-weight: 700; font-size: 1.1rem; }
+        .org-card .stat-number.critical { color: #d32f2f; }
+        .org-card .stat-number.urgent { color: #f57c00; }
+        .org-card .css-score { margin-top: 12px; display: flex; align-items: center; gap: 8px; }
+        .org-card .css-score .score-num { font-size: 1.4rem; font-weight: 700; }
+        .org-card .css-score .score-label { font-size: 0.75rem; color: #666; }
+        .score-green { color: #2e7d32; }
+        .score-orange { color: #f57c00; }
+        .score-red { color: #d32f2f; }
+
+        /* LoB detail page */
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #006400; text-decoration: none; font-size: 0.85rem; font-weight: 500; margin-bottom: 20px; padding: 8px 12px; border-radius: 6px; background: #e8f5e9; }
+        .back-link:hover { background: #c8e6c9; }
+        .section { margin-bottom: 28px; }
+        .section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 3px solid #008a00; color: #1a1a1a; }
         .cases-table { width: 100%; border-collapse: collapse; background: white; border-radius: 0 0 8px 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); table-layout: fixed; }
-        .cases-table th { background: #004d00; color: white; padding: 12px 12px; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .cases-table th { background: #004d00; color: white; padding: 12px; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
         .cases-table th:nth-child(1) { width: 3%; }
         .cases-table th:nth-child(2) { width: 5%; }
         .cases-table th:nth-child(3) { width: 9%; }
         .cases-table th:nth-child(4) { width: 50%; }
         .cases-table th:nth-child(5) { width: 15%; }
         .cases-table th:nth-child(6) { width: 10%; }
-        .cases-table td { padding: 12px 12px; border-bottom: 1px solid #e8efe8; font-size: 0.85rem; vertical-align: top; }
+        .cases-table td { padding: 12px; border-bottom: 1px solid #e8efe8; font-size: 0.85rem; vertical-align: top; }
         .cases-table td:nth-child(4) { word-wrap: break-word; overflow-wrap: break-word; white-space: normal; }
         .cases-table td:nth-child(6) { white-space: nowrap; }
         .cases-table tr:last-child td { border-bottom: none; }
@@ -51,34 +73,38 @@
         .status-redirected { background: #fce4ec; color: #c62828; }
         .case-link { color: #006400; text-decoration: none; font-weight: 600; }
         .case-link:hover { text-decoration: underline; color: #008a00; }
-        .scorecard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
-        .scorecard { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 4px solid #008a00; }
-        .scorecard h3 { font-size: 0.95rem; margin-bottom: 16px; color: #333; }
+
+        /* Scorecard on detail page */
+        .scorecard-detail { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 4px solid #008a00; max-width: 500px; }
+        .overall-score { text-align: center; margin-bottom: 16px; }
+        .overall-score .number { font-size: 2.5rem; font-weight: 700; }
+        .overall-score .label { font-size: 0.75rem; color: #666; text-transform: uppercase; }
         .score-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .score-label { font-size: 0.8rem; color: #555; }
+        .score-label { font-size: 0.8rem; color: #555; min-width: 130px; }
         .score-bar-container { flex: 1; margin: 0 12px; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
         .score-bar { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
         .score-value { font-size: 0.85rem; font-weight: 600; min-width: 35px; text-align: right; }
         .score-high { background: #2e7d32; }
         .score-mid { background: #f57c00; }
         .score-low { background: #d32f2f; }
-        .overall-score { text-align: center; margin-bottom: 16px; }
-        .overall-score .number { font-size: 2.5rem; font-weight: 700; }
-        .overall-score .label { font-size: 0.75rem; color: #666; text-transform: uppercase; }
-        .improvement-areas { background: #fff8e1; border-left: 4px solid #f57c00; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-top: 20px; }
-        .improvement-areas h3 { font-size: 1rem; color: #e65100; margin-bottom: 12px; }
-        .improvement-areas ul { padding-left: 20px; }
-        .improvement-areas li { margin-bottom: 8px; font-size: 0.85rem; line-height: 1.5; }
+
+        /* News section */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+        .news-card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #008a00; }
+        .news-card h3 { font-size: 0.9rem; margin-bottom: 6px; line-height: 1.4; }
+        .news-card a { color: #006400; text-decoration: none; font-weight: 500; }
+        .news-card a:hover { text-decoration: underline; color: #008a00; }
+        .news-card .source { font-size: 0.75rem; color: #666; margin-top: 6px; }
+
         .no-cases { background: #e8f5e9; padding: 20px; border-radius: 8px; text-align: center; color: #2e7d32; font-weight: 500; }
-        .org-group { margin-bottom: 24px; }
-        .org-group-header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #e8f5e9; border-radius: 8px 8px 0 0; border-left: 4px solid #008a00; }
-        .org-group-name { font-weight: 600; font-size: 0.9rem; color: #1a1a1a; }
-        .org-group-id { font-family: monospace; font-size: 0.8rem; color: #004d00; background: #c8e6c9; padding: 2px 8px; border-radius: 4px; }
-        .org-group-count { margin-left: auto; font-size: 0.75rem; color: #555; font-weight: 500; }
+        .no-scorecard { background: #f5f5f5; padding: 16px; border-radius: 8px; color: #666; font-size: 0.85rem; }
+
         @media (max-width: 768px) {
             .header { flex-direction: column; gap: 8px; padding: 16px; }
+            .nav { padding: 0 16px; }
             .container { padding: 16px; }
-            .scorecard-grid { grid-template-columns: 1fr; }
+            .org-cards { grid-template-columns: 1fr; }
+            .chart-wrapper { height: 250px; }
         }
     </style>
 </head>
@@ -87,73 +113,221 @@
         <h1>The Toronto-Dominion Bank - Customer Dashboard</h1>
         <div class="meta">Last updated: <span id="last-updated"></span></div>
     </div>
-    <div class="container">
-        <div class="section">
-            <h2 class="section-title">News Headlines</h2>
-            <div class="news-grid" id="news-container"></div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Open Cases (Level 1 - Critical &amp; Level 2 - Urgent)</h2>
-            <div id="cases-container"></div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Customer Success Scorecard</h2>
-            <div class="scorecard-grid" id="scorecard-container"></div>
-        </div>
-
-        <div class="section" id="improvement-section">
-            <div class="improvement-areas">
-                <h3>Areas for Improvement</h3>
-                <ul id="improvement-list"></ul>
-            </div>
-        </div>
-    </div>
+    <div class="nav" id="nav-bar"></div>
+    <div class="container" id="app"></div>
 
     <script>
+        let appData = null;
+        let caseChart = null;
+
         async function loadData() {
             try {
                 const response = await fetch('data.json');
-                const data = await response.json();
-                renderDashboard(data);
+                appData = await response.json();
+                updateTimestamp();
+                buildNav();
+                route();
             } catch (e) {
                 console.error('Failed to load data:', e);
             }
         }
 
-        function renderDashboard(data) {
+        function updateTimestamp() {
             const etDate = new Date().toLocaleString('en-US', {
                 timeZone: 'America/New_York',
                 year: 'numeric', month: 'short', day: 'numeric',
                 hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
             });
             document.getElementById('last-updated').textContent = etDate;
-            renderNews(data.news);
-            renderCases(data.cases);
-            renderScorecards(data.scorecards);
-            renderImprovements(data.improvements);
         }
 
-        function renderNews(news) {
-            const container = document.getElementById('news-container');
-            if (!news || news.length === 0) {
-                container.innerHTML = '<p style="color:#666;">No recent news available.</p>';
+        function getOrgs() {
+            const orgMap = {};
+            appData.cases.forEach(c => {
+                if (!c.orgId) return;
+                if (!orgMap[c.orgId]) orgMap[c.orgId] = { name: c.orgName || c.account, cases: [] };
+                orgMap[c.orgId].cases.push(c);
+            });
+            return orgMap;
+        }
+
+        function getScorecard(orgId) {
+            return appData.scorecards.find(sc => sc.orgId === orgId) || null;
+        }
+
+        function buildNav() {
+            const nav = document.getElementById('nav-bar');
+            const orgs = getOrgs();
+            let html = `<a href="#home" data-page="home">Overview</a>`;
+            Object.entries(orgs).forEach(([orgId, org]) => {
+                html += `<a href="#org-${orgId}" data-page="org-${orgId}">${org.name}</a>`;
+            });
+            nav.innerHTML = html;
+        }
+
+        function updateActiveNav(page) {
+            document.querySelectorAll('.nav a').forEach(a => {
+                a.classList.toggle('active', a.dataset.page === page);
+            });
+        }
+
+        function route() {
+            const hash = window.location.hash || '#home';
+            const page = hash.slice(1);
+            updateActiveNav(page);
+
+            if (page === 'home') {
+                renderHome();
+            } else if (page.startsWith('org-')) {
+                const orgId = page.replace('org-', '');
+                renderOrgDetail(orgId);
+            }
+        }
+
+        function renderHome() {
+            const app = document.getElementById('app');
+            const orgs = getOrgs();
+            const orgEntries = Object.entries(orgs);
+
+            const labels = orgEntries.map(([, org]) => org.name);
+            const criticalCounts = orgEntries.map(([, org]) => org.cases.filter(c => c.severity.includes('Critical')).length);
+            const urgentCounts = orgEntries.map(([, org]) => org.cases.filter(c => c.severity.includes('Urgent')).length);
+
+            let cardsHtml = orgEntries.map(([orgId, org]) => {
+                const critical = org.cases.filter(c => c.severity.includes('Critical')).length;
+                const urgent = org.cases.filter(c => c.severity.includes('Urgent')).length;
+                const sc = getScorecard(orgId);
+                const scoreHtml = sc && sc.overall !== null
+                    ? `<div class="css-score"><span class="score-num ${sc.overall >= 70 ? 'score-green' : sc.overall >= 40 ? 'score-orange' : 'score-red'}">${sc.overall}</span><span class="score-label">CSS Score</span></div>`
+                    : '';
+                return `
+                    <div class="org-card" onclick="window.location.hash='#org-${orgId}'">
+                        <h3>${org.name}</h3>
+                        <div class="stats">
+                            ${critical > 0 ? `<div class="stat"><span class="stat-number critical">${critical}</span> Critical</div>` : ''}
+                            ${urgent > 0 ? `<div class="stat"><span class="stat-number urgent">${urgent}</span> Urgent</div>` : ''}
+                            <div class="stat"><strong>${org.cases.length}</strong>&nbsp;total</div>
+                        </div>
+                        ${scoreHtml}
+                    </div>
+                `;
+            }).join('');
+
+            let newsHtml = '';
+            if (appData.news && appData.news.length > 0) {
+                newsHtml = `
+                    <div class="section">
+                        <h2 class="section-title">News Headlines</h2>
+                        <div class="news-grid">
+                            ${appData.news.map(item => `
+                                <div class="news-card">
+                                    <h3><a href="${item.url}" target="_blank" rel="noopener">${item.title}</a></h3>
+                                    <div class="source">${item.source} &bull; ${item.date}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            app.innerHTML = `
+                <div class="chart-container">
+                    <h2>Open Cases by Line of Business</h2>
+                    <div class="chart-wrapper"><canvas id="cases-chart"></canvas></div>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Lines of Business</h2>
+                    <div class="org-cards">${cardsHtml}</div>
+                </div>
+                ${newsHtml}
+            `;
+
+            renderChart(labels, criticalCounts, urgentCounts);
+        }
+
+        function renderChart(labels, criticalCounts, urgentCounts) {
+            const ctx = document.getElementById('cases-chart').getContext('2d');
+            if (caseChart) caseChart.destroy();
+            caseChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Level 1 - Critical',
+                            data: criticalCounts,
+                            backgroundColor: '#d32f2f',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Level 2 - Urgent',
+                            data: urgentCounts,
+                            backgroundColor: '#f57c00',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { font: { size: 11 }, maxRotation: 45, minRotation: 0 }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1, font: { size: 12 } },
+                            title: { display: true, text: 'Number of Cases' }
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const idx = elements[0].index;
+                            const orgs = Object.keys(getOrgs());
+                            window.location.hash = '#org-' + orgs[idx];
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderOrgDetail(orgId) {
+            const app = document.getElementById('app');
+            const orgs = getOrgs();
+            const org = orgs[orgId];
+
+            if (!org) {
+                app.innerHTML = `<a class="back-link" href="#home">&larr; Back to Overview</a><p>Organization not found.</p>`;
                 return;
             }
-            container.innerHTML = news.map(item => `
-                <div class="news-card">
-                    <h3><a href="${item.url}" target="_blank" rel="noopener">${item.title}</a></h3>
-                    <div class="source">${item.source} &bull; ${item.date}</div>
+
+            const sc = getScorecard(orgId);
+            const casesHtml = renderCasesTable(org.cases, orgId);
+            const scorecardHtml = renderScorecardDetail(sc);
+
+            app.innerHTML = `
+                <a class="back-link" href="#home">&larr; Back to Overview</a>
+                <h2 style="font-size:1.3rem;margin-bottom:4px;">${org.name}</h2>
+                <p style="font-size:0.8rem;color:#666;margin-bottom:24px;">Org ID: ${orgId} &bull; ${org.cases.length} open case${org.cases.length !== 1 ? 's' : ''}</p>
+
+                <div class="section">
+                    <h2 class="section-title">Open Cases</h2>
+                    ${casesHtml}
                 </div>
-            `).join('');
+
+                <div class="section">
+                    <h2 class="section-title">Customer Success Score</h2>
+                    ${scorecardHtml}
+                </div>
+            `;
         }
 
-        function renderCases(cases) {
-            const container = document.getElementById('cases-container');
+        function renderCasesTable(cases, orgId) {
             if (!cases || cases.length === 0) {
-                container.innerHTML = '<div class="no-cases">No open cases. All clear!</div>';
-                return;
+                return '<div class="no-cases">No open cases. All clear!</div>';
             }
             const statusClass = (status) => {
                 if (status === 'New') return 'status-new';
@@ -165,27 +339,14 @@
             const sevClass = (sev) => sev.includes('Critical') ? 'sev-critical' : 'sev-high';
             const sevLabel = (sev) => sev.includes('Critical') ? 'L1' : 'L2';
 
-            const grouped = {};
-            cases.forEach(c => {
-                if (!c.orgId) return;
-                const key = c.orgId;
-                if (!grouped[key]) grouped[key] = { name: c.orgName || c.account, cases: [] };
-                grouped[key].cases.push(c);
-            });
-
-            container.innerHTML = Object.entries(grouped).map(([orgId, group]) => `
-                <div class="org-group">
-                    <div class="org-group-header">
-                        <span class="org-group-name">${group.name}</span>
-                        <span class="org-group-id">${orgId}</span>
-                        <span class="org-group-count">${group.cases.length} case${group.cases.length > 1 ? 's' : ''}</span>
-                    </div>
-                    <table class="cases-table">
-                        <thead><tr>
-                            <th></th><th>Sev</th><th>Case #</th><th>Subject</th><th>Status</th><th>Created</th>
-                        </tr></thead>
-                        <tbody>
-                            ${group.cases.map((c, i) => `<tr class="case-row" onclick="toggleDetail('${orgId}-${i}', this)">
+            return `
+                <table class="cases-table">
+                    <thead><tr>
+                        <th></th><th>Sev</th><th>Case #</th><th>Subject</th><th>Status</th><th>Created</th>
+                    </tr></thead>
+                    <tbody>
+                        ${cases.map((c, i) => `
+                            <tr class="case-row" onclick="toggleDetail('${orgId}-${i}')">
                                 <td><span class="expand-icon" id="icon-${orgId}-${i}">&#9654;</span></td>
                                 <td><span class="sev-badge ${sevClass(c.severity)}">${sevLabel(c.severity)}</span></td>
                                 <td><a href="https://orgcs.lightning.force.com/lightning/r/Case/${c.caseId}/view" target="_blank" rel="noopener" class="case-link" onclick="event.stopPropagation()">${c.caseNumber}</a></td>
@@ -200,14 +361,45 @@
                                         ${c.summary || 'No summary available.'}
                                     </div>
                                 </td>
-                            </tr>`).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `).join('');
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
         }
 
-        function toggleDetail(id, row) {
+        function renderScorecardDetail(sc) {
+            if (!sc || sc.overall === null) {
+                return '<div class="no-scorecard">No Customer Success Score available for this org.</div>';
+            }
+            const scoreColor = (val) => val >= 70 ? 'score-high' : val >= 40 ? 'score-mid' : 'score-low';
+            const overallColor = sc.overall >= 70 ? '#2e7d32' : sc.overall >= 40 ? '#f57c00' : '#d32f2f';
+            return `
+                <div class="scorecard-detail">
+                    <div class="overall-score">
+                        <div class="number" style="color:${overallColor}">${sc.overall}</div>
+                        <div class="label">Overall Score</div>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Product Adoption</span>
+                        <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.productAdoption)}" style="width:${sc.productAdoption}%"></div></div>
+                        <span class="score-value">${sc.productAdoption}</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Technical Health</span>
+                        <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.technicalHealth)}" style="width:${sc.technicalHealth}%"></div></div>
+                        <span class="score-value">${sc.technicalHealth}</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Customer Expertise</span>
+                        <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.customerExpertise)}" style="width:${sc.customerExpertise}%"></div></div>
+                        <span class="score-value">${sc.customerExpertise}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleDetail(id) {
             const detail = document.getElementById('detail-' + id);
             const icon = document.getElementById('icon-' + id);
             if (detail.classList.contains('hidden')) {
@@ -219,55 +411,7 @@
             }
         }
 
-        function renderScorecards(scorecards) {
-            const container = document.getElementById('scorecard-container');
-            container.innerHTML = scorecards.map(sc => {
-                if (sc.overall === null) {
-                    return `
-                        <div class="scorecard">
-                            <h3>${sc.name}</h3>
-                            <div class="overall-score">
-                                <div class="number" style="color:#9e9e9e">&mdash;</div>
-                                <div class="label">No Score Available</div>
-                            </div>
-                            <p style="text-align:center;color:#666;font-size:0.85rem;">This Data Cloud org does not yet have a Customer Success Score.</p>
-                        </div>
-                    `;
-                }
-                const scoreColor = (val) => val >= 70 ? 'score-high' : val >= 40 ? 'score-mid' : 'score-low';
-                const overallColor = sc.overall >= 70 ? '#2e7d32' : sc.overall >= 40 ? '#f57c00' : '#d32f2f';
-                return `
-                    <div class="scorecard">
-                        <h3>${sc.name}</h3>
-                        <div class="overall-score">
-                            <div class="number" style="color:${overallColor}">${sc.overall}</div>
-                            <div class="label">Overall Score</div>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Product Adoption</span>
-                            <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.productAdoption)}" style="width:${sc.productAdoption}%"></div></div>
-                            <span class="score-value">${sc.productAdoption}</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Technical Health</span>
-                            <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.technicalHealth)}" style="width:${sc.technicalHealth}%"></div></div>
-                            <span class="score-value">${sc.technicalHealth}</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-label">Customer Expertise</span>
-                            <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.customerExpertise)}" style="width:${sc.customerExpertise}%"></div></div>
-                            <span class="score-value">${sc.customerExpertise}</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderImprovements(improvements) {
-            const list = document.getElementById('improvement-list');
-            list.innerHTML = improvements.map(item => `<li>${item}</li>`).join('');
-        }
-
+        window.addEventListener('hashchange', route);
         loadData();
     </script>
 </body>
