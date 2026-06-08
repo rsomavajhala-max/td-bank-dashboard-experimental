@@ -265,6 +265,95 @@
     }
   ],
   "nextBestActions": {
+    "00D1U000000u3xM": [
+      {
+        "priority": "High",
+        "action": "Resolve HTTP callout failure in Production",
+        "rationale": "Level 1 Critical case (473702812). Auth provider token exchange failing due to Content-Length header conflict with new platform behavior. Root cause identified — ensure the fix (removing explicit Content-Length header from UAPAuthPlugin) is deployed and validated."
+      },
+      {
+        "priority": "Medium",
+        "action": "Investigate why platform behavior change was not communicated in release notes",
+        "rationale": "Case summary notes the team is investigating why this breaking change wasn't in release notes. Follow up to determine if other callouts may be affected and if a broader advisory is needed."
+      }
+    ],
+    "00D41000002likl": [
+      {
+        "priority": "Medium",
+        "action": "Confirm deployment monitoring case can be closed",
+        "rationale": "Case 473663520 — deployment monitoring for Case Management enhancements completed. CSM asked customer if deployment was successful. Awaiting confirmation to close."
+      }
+    ],
+    "00D300000001G8W": [
+      {
+        "priority": "High",
+        "action": "Remediate Apex usage at 98% — blocking development",
+        "rationale": "Case 473642219. Apex usage at 98.06% is blocking an upcoming release. Support needs 45-min PROD access to run diagnostic script. Customer agreed to a live call — schedule and execute promptly."
+      },
+      {
+        "priority": "High",
+        "action": "Address Technical Health score — critically low at 32/100",
+        "rationale": "CSS Technical Health is 32/100, the lowest across all TD orgs. The Apex limit case is a symptom. Conduct a broader technical health review covering governor limits, code quality, and platform debt."
+      },
+      {
+        "priority": "Medium",
+        "action": "Provide guidance on Lucky13 and HttpOnly cookie vulnerabilities",
+        "rationale": "Case 473583530. Two security vulnerabilities flagged — awaiting additional information from customer. Follow up to clarify what Salesforce can remediate vs. what is platform-managed."
+      }
+    ],
+    "00Df4000004l6wQ": [
+      {
+        "priority": "High",
+        "action": "Resolve report component validation error in sandbox",
+        "rationale": "Case 473616253. Validation error on BusinessAdministratorReports/BBHUB_Duplicate_accounts_Report in cicd26pi2 sandbox. Customer emptied recycle bin — check if issue persists and investigate physical delete process."
+      },
+      {
+        "priority": "Medium",
+        "action": "Improve Product Adoption — score at 47/100",
+        "rationale": "CSS Product Adoption is 47/100 despite Customer Expertise at 100. Team knows the platform but isn't leveraging all features. Identify unused capabilities and create targeted enablement sessions."
+      },
+      {
+        "priority": "Medium",
+        "action": "Improve Technical Health — score at 39/100",
+        "rationale": "CSS Technical Health at 39/100 is the second lowest across TD orgs. Review error rates, integration patterns, and sandbox hygiene to identify systemic issues."
+      }
+    ],
+    "00D4P00000116t0": [
+      {
+        "priority": "High",
+        "action": "Provide Hyperforce migration guidance",
+        "rationale": "Case 473580757. TD needs clarity on Hyperforce migration impact: community portals, API integrations, SF-to-SF connections, connected apps, managed packages. Compile documentation and respond."
+      },
+      {
+        "priority": "High",
+        "action": "Process MFA exemption request for US Wealth orgs",
+        "rationale": "Case 473580614. 3-month MFA exemption requested across 4 enforcement areas while PingFed integration is evaluated. Discussed on 05/27 call — drive to resolution."
+      },
+      {
+        "priority": "Medium",
+        "action": "Provide encryption-at-rest evidence for audit compliance",
+        "rationale": "Case 473509968. TD requesting screenshot evidence showing encryption at rest is configured for Salesforce Advisor Portal (FSC1). Audit compliance requirement — provide documentation promptly."
+      }
+    ],
+    "00D6A000002zHJ3": [
+      {
+        "priority": "High",
+        "action": "Process 90-day MFA enforcement deferral request",
+        "rationale": "Case 473573526. Sandbox enforcement June 2026, production July 2026. TD needs deferral for controlled rollout aligned with enterprise PingFed/Windows Hello implementation. Time-sensitive — sandbox deadline is imminent."
+      }
+    ],
+    "00D1I000000oXUy": [
+      {
+        "priority": "Medium",
+        "action": "Confirm MFA extension solution is accepted",
+        "rationale": "Case 473527010. Solution provided for MFA extension on ~20,000 user org. Verify customer has accepted the solution and close case if appropriate."
+      },
+      {
+        "priority": "Medium",
+        "action": "Improve Technical Health — score at 43/100",
+        "rationale": "CSS Technical Health at 43/100. With 20,000 users and SSO that doesn't support MFA, there may be broader platform configuration gaps. Review integration health and platform limits."
+      }
+    ],
     "00DDp000000g3wu": [
       {
         "priority": "High",
