@@ -264,6 +264,62 @@
       "customerExpertise": 100
     }
   ],
+  "nextBestActions": {
+    "00DDp000000g3wu": [
+      {
+        "priority": "High",
+        "action": "Drive Product Adoption enablement sessions for Data Cloud features",
+        "rationale": "Product Adoption at 44/100 is the weakest score — significant gap vs. Customer Expertise (98). Schedule Data Cloud feature workshops focusing on segmentation, activation, and calculated insights to close the adoption gap."
+      },
+      {
+        "priority": "High",
+        "action": "Resolve Real-time Identity Resolution cross-domain failure before Refer a Friend launch",
+        "rationale": "Identity Resolution only works in batch, not real-time across domains. The Refer a Friend deployment on June 10 likely depends on real-time unification working correctly. Escalate with R&D if needed."
+      },
+      {
+        "priority": "Medium",
+        "action": "Confirm data retention policy applied successfully on 3 DLOs",
+        "rationale": "365-day retention requested on Lead_BBCRM, Lead_PBCRM, Lead_WealthCRM. Once confirmed, close the case and document the retention policy for audit compliance."
+      },
+      {
+        "priority": "Medium",
+        "action": "Proactive deployment support for Refer a Friend go-live (June 10)",
+        "rationale": "Customer preemptively raised a case for deployment monitoring. Assign standby resources and confirm rollback plan to minimize production risk."
+      },
+      {
+        "priority": "Low",
+        "action": "Technical Health review — investigate root causes of 52/100 score",
+        "rationale": "Technical Health improved by 1 point but remains below threshold. Review platform limits, API error rates, and governor limit consumption to identify systemic issues."
+      }
+    ],
+    "00D8c000008QbQi": [
+      {
+        "priority": "High",
+        "action": "Resolve Data Transform PROD failure immediately",
+        "rationale": "AAM MuleSoft Data Transform failing in production with no error details — this blocks active data pipelines. Case is brand new (June 8). Push for root cause analysis and workaround within 24 hours."
+      },
+      {
+        "priority": "High",
+        "action": "Confirm SFTP ingestion limit increase is applied and tested",
+        "rationale": "Solution was provided for the 2GB file size limit. Verify the increase is active in production and customer has confirmed ingestion works for their larger files. Close case once validated."
+      },
+      {
+        "priority": "Medium",
+        "action": "Product Adoption enablement — focus on advanced Data Cloud capabilities",
+        "rationale": "Product Adoption at 51/100 is the weakest dimension (dropped 1 point). Customer Expertise is already 100 — they know the product, they just aren't using all of it. Identify unused features and create an activation plan."
+      },
+      {
+        "priority": "Medium",
+        "action": "Technical Health improvement plan — target 70+ threshold",
+        "rationale": "Technical Health at 60 (dropped 2 points). At current trajectory, this needs attention. Review error logs, integration health, and API patterns. Score of 70+ would move overall to 'Excellent+' territory."
+      },
+      {
+        "priority": "Low",
+        "action": "Document data pipeline architecture and failure modes",
+        "rationale": "Two of the open cases are pipeline-related (Data Transform + SFTP limits). Create a shared architecture doc with support team to accelerate future troubleshooting and reduce MTTR."
+      }
+    ]
+  },
   "improvements": [
     "TD US Commercial (00D300000001G8W): Technical Health critically low at 32/100. Active Sev 2 cases around Apex usage limits and security vulnerabilities. Prioritize technical debt remediation.",
     "TD Business Banking (00Df4000004l6wQ): Overall score 55/100 is the lowest. Product Adoption at 47 and Technical Health at 39 both need focused enablement. Report validation errors actively being worked.",

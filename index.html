@@ -99,6 +99,21 @@
         .no-cases { background: #e8f5e9; padding: 20px; border-radius: 8px; text-align: center; color: #2e7d32; font-weight: 500; }
         .no-scorecard { background: #f5f5f5; padding: 16px; border-radius: 8px; color: #666; font-size: 0.85rem; }
 
+        /* Next Best Actions */
+        .nba-list { display: flex; flex-direction: column; gap: 12px; }
+        .nba-item { background: white; border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #008a00; }
+        .nba-item.priority-high { border-left-color: #d32f2f; }
+        .nba-item.priority-medium { border-left-color: #f57c00; }
+        .nba-item.priority-low { border-left-color: #4caf50; }
+        .nba-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .nba-priority { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+        .nba-priority-high { background: #ffebee; color: #c62828; }
+        .nba-priority-medium { background: #fff3e0; color: #e65100; }
+        .nba-priority-low { background: #e8f5e9; color: #2e7d32; }
+        .nba-action { font-size: 0.9rem; font-weight: 600; color: #1a1a1a; }
+        .nba-rationale { font-size: 0.8rem; color: #555; line-height: 1.5; margin-top: 6px; }
+        .no-nba { background: #f5f5f5; padding: 16px; border-radius: 8px; color: #666; font-size: 0.85rem; }
+
         @media (max-width: 768px) {
             .header { flex-direction: column; gap: 8px; padding: 16px; }
             .nav { padding: 0 16px; }
@@ -307,11 +322,17 @@
             const sc = getScorecard(orgId);
             const casesHtml = renderCasesTable(org.cases, orgId);
             const scorecardHtml = renderScorecardDetail(sc);
+            const nbaHtml = renderNextBestActions(orgId);
 
             app.innerHTML = `
                 <a class="back-link" href="#home">&larr; Back to Overview</a>
                 <h2 style="font-size:1.3rem;margin-bottom:4px;">${org.name}</h2>
                 <p style="font-size:0.8rem;color:#666;margin-bottom:24px;">Org ID: ${orgId} &bull; ${org.cases.length} open case${org.cases.length !== 1 ? 's' : ''}</p>
+
+                <div class="section">
+                    <h2 class="section-title">Next Best Actions</h2>
+                    ${nbaHtml}
+                </div>
 
                 <div class="section">
                     <h2 class="section-title">Open Cases</h2>
@@ -397,6 +418,22 @@
                     </div>
                 </div>
             `;
+        }
+
+        function renderNextBestActions(orgId) {
+            const actions = appData.nextBestActions && appData.nextBestActions[orgId];
+            if (!actions || actions.length === 0) {
+                return '<div class="no-nba">No next best actions defined for this org yet.</div>';
+            }
+            return `<div class="nba-list">${actions.map(a => `
+                <div class="nba-item priority-${a.priority.toLowerCase()}">
+                    <div class="nba-header">
+                        <span class="nba-priority nba-priority-${a.priority.toLowerCase()}">${a.priority}</span>
+                        <span class="nba-action">${a.action}</span>
+                    </div>
+                    <div class="nba-rationale">${a.rationale}</div>
+                </div>
+            `).join('')}</div>`;
         }
 
         function toggleDetail(id) {
