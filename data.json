@@ -1,0 +1,275 @@
+{
+  "lastUpdated": "2026-06-08T16:00:00Z",
+  "news": [
+    {
+      "title": "TD Ranks #1 in Customer Satisfaction with Mobile Banking Apps in JD Power 2026 Canada Study",
+      "url": "https://stories.td.com/ca/en/news/2026-06-04-td-ranks-231-in-customer-satisfaction-with-mobile-banking-app",
+      "source": "TD Newsroom",
+      "date": "2026-06-04"
+    },
+    {
+      "title": "TD Bank Group Reports Second Quarter 2026 Results",
+      "url": "https://stories.td.com/ca/en/news/2026-05-28-td-bank-group-reports-second-quarter-2026-results",
+      "source": "TD Newsroom",
+      "date": "2026-05-28"
+    },
+    {
+      "title": "TD Launches Agentic AI to Transform Real Estate Secured Lending from End to End",
+      "url": "https://stories.td.com/ca/en/news/2026-05-21-td-launches-agentic-ai-to-transform-real-estate-secured-lend",
+      "source": "TD Newsroom",
+      "date": "2026-05-21"
+    },
+    {
+      "title": "TD Survey: Middle Market Dealmakers Ready to Pursue M&A, but Valuation Gaps Persist",
+      "url": "https://stories.td.com/us/en/article/td-survey-middle-market-dealmakers-ready-to-pursue-m-a-but-valuation-gaps-persist",
+      "source": "TD Stories",
+      "date": "2026-05-19"
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "500Hx00001H3YHNIA3",
+      "caseNumber": "473702812",
+      "subject": "Http callout failure in Production",
+      "status": "Working",
+      "severity": "Level 1 - Critical",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D1U000000u3xM",
+      "createdDate": "2026-06-08",
+      "summary": "Auth provider token exchange failing with 'Content-Length header already present' error. Root cause identified: explicit Content-Length header in UAPAuthPlugin Apex class conflicts with new platform behavior. Fix: remove the header and let Salesforce manage it automatically. Support provided KB article reference. Next: CSM to be notified, investigating why this wasn't in release notes.",
+      "orgName": "TD Asset Management (TDAM)"
+    },
+    {
+      "caseId": "500Hx00001H47evIAB",
+      "caseNumber": "473704248",
+      "subject": "Data Transform failure in PROD",
+      "status": "New",
+      "severity": "Level 2 - Urgent",
+      "account": "TD US CDP",
+      "orgId": "00D8c000008QbQi",
+      "createdDate": "2026-06-08",
+      "summary": "AAM MuleSoft Data Transform in PROD failing with no detailed error message when run manually. Customer has provided screenshot and granted org access. Support manager acknowledged and assigned team. Awaiting initial investigation.",
+      "orgName": "TD US CDP"
+    },
+    {
+      "caseId": "500Hx00001GliyLIAR",
+      "caseNumber": "473663520",
+      "subject": "Deployment monitoring Request (June 5, 2026, 10pm EST - June 6 2026, 8pm EST)",
+      "status": "Need More Information",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D41000002likl",
+      "createdDate": "2026-06-05",
+      "summary": "Deployment monitoring for Case Management enhancements (LEI links, Wealth concierge, Ticketing smartforms) via Jenkins/Dataloader. No alerts observed during EMEA monitoring hours. CSM asked customer if deployment was successful and if case can be closed. Awaiting confirmation.",
+      "orgName": "TD Wealth Canada (SELA)"
+    },
+    {
+      "caseId": "500Hx00001GkMdJIAV",
+      "caseNumber": "473660884",
+      "subject": "Data retention: Apply data retention",
+      "status": "Working",
+      "severity": "Level 2 - Urgent",
+      "account": "TD Canada CDP",
+      "orgId": "00DDp000000g3wu",
+      "createdDate": "2026-06-05",
+      "summary": "Request to apply 365-day data retention on 3 DLOs (Lead_BBCRM, Lead_PBCRM, Lead_WealthCRM) using CreatedDate as EventTime field. Org ID confirmed as 00DDp000000g3wu (PROD). Support proceeding with configuration.",
+      "orgName": "TD Canada CDP"
+    },
+    {
+      "caseId": "500Hx00001GaCfFIAV",
+      "caseNumber": "473642219",
+      "subject": "Seek Assistance on How to Resolve Issue with Percent of Apex Used",
+      "status": "Working",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D300000001G8W",
+      "createdDate": "2026-06-04",
+      "summary": "Apex usage at 98.06%, blocking development for upcoming release. Support requires PROD system admin access for 45min to run internal script checking for code hacks/misuse. Customer agreed to grant 1-hour access with a live call. Limit increase requires PM verification and sanity checks \u2014 not an emergency change.",
+      "orgName": "TD US Commercial"
+    },
+    {
+      "caseId": "500Hx00001GQY4LIAX",
+      "caseNumber": "473627336",
+      "subject": "Increase Maximum size per file for SFTP Ingestion",
+      "status": "Solution Provided",
+      "severity": "Level 2 - Urgent",
+      "account": "TD US CDP",
+      "orgId": "00D8c000008QbQi",
+      "createdDate": "2026-06-03",
+      "summary": "Source system cannot split files and exceeds the 2GB SFTP ingestion limit in Data Cloud. Customer requested urgent limit increase. Solution has been provided by support.",
+      "orgName": "TD US CDP"
+    },
+    {
+      "caseId": "500Hx00001GBXoXIAX",
+      "caseNumber": "473616253",
+      "subject": "Report component failing validation with non-descriptive error",
+      "status": "Working",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00Df4000004l6wQ",
+      "createdDate": "2026-06-02",
+      "summary": "Validation error on report component (BusinessAdministratorReports/BBHUB_Duplicate_accounts_Report) in cicd26pi2 sandbox. Support unable to query org directly due to access restrictions. Customer emptied recycle bin on CICD26PI2 and ESIT sandboxes. Support checking if issue persists and investigating physical delete process.",
+      "orgName": "TD Business Banking"
+    },
+    {
+      "caseId": "500Hx00001Fj09BIAR",
+      "caseNumber": "473583530",
+      "subject": "Seek Assistance from Salesforce Support to Fix the Vulnerabilities",
+      "status": "Need More Information",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D300000001G8W",
+      "createdDate": "2026-05-28",
+      "summary": "Two vulnerabilities flagged: (1) Lucky13 \u2014 servers using CBC mode ciphers susceptible to attack; (2) Missing HttpOnly flag on cookies allowing client-side JS access. Customer requesting Salesforce assistance to remediate. Awaiting additional information.",
+      "orgName": "TD US Commercial"
+    },
+    {
+      "caseId": "500Hx00001FfTcnIAF",
+      "caseNumber": "473580757",
+      "subject": "Queries related to Hyperforce migration",
+      "status": "Need More Information",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D4P00000116t0",
+      "createdDate": "2026-05-28",
+      "summary": "TD seeking guidance on Hyperforce migration impact: community portal connections, API integrations, SF-to-SF connections with commercial org, connected apps, managed packages. Also asking about documentation listing all impacted functionalities. Awaiting Salesforce responses.",
+      "orgName": "TD US Wealth"
+    },
+    {
+      "caseId": "500Hx00001FfA2HIAV",
+      "caseNumber": "473580614",
+      "subject": "Please exempt mfa enablements for 3 months for our US Wealth orgs",
+      "status": "Working",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D4P00000116t0",
+      "createdDate": "2026-05-28",
+      "summary": "Requesting 3-month MFA exemption (until October) for all US Wealth orgs across 4 enforcement areas: employee MFA, phishing-resistant admin MFA, report action step-up auth, and anomalous report export verification. Internal architects evaluating PingFed integration. Discussed with Salesforce team on 05/27 call.",
+      "orgName": "TD US Wealth"
+    },
+    {
+      "caseId": "500Hx00001FYFoHIAX",
+      "caseNumber": "473573526",
+      "subject": "90-Day Deferral Request for Salesforce MFA Enforcement - REDS",
+      "status": "Working",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D6A000002zHJ3",
+      "createdDate": "2026-05-27",
+      "summary": "Requesting 90-day deferral for MFA enforcement on TDS Org (00D6A000002zHJ3). Sandbox enforcement June 2026, production July 2026. Deferral needed for controlled rollout aligned with TD enterprise-wide PingFed/Windows Hello implementation. Targeting phased enablement by end of year.",
+      "orgName": "TD REDS"
+    },
+    {
+      "caseId": "500Hx00001FN8rnIAD",
+      "caseNumber": "473562076",
+      "subject": "Notification of Upcoming Production Deployment - Refer a Friend Capability (June 10)",
+      "status": "Working",
+      "severity": "Level 2 - Urgent",
+      "account": "TD Canada CDP",
+      "orgId": "00DDp000000g3wu",
+      "createdDate": "2026-05-26",
+      "summary": "Major production deployment for Refer a Friend capability scheduled June 10. Customer notifying support team in advance and requesting standby availability in case issues arise during or post-deployment.",
+      "orgName": "TD Canada CDP"
+    },
+    {
+      "caseId": "500Hx00001F4ivlIAB",
+      "caseNumber": "473537399",
+      "subject": "Datacloud: Real-time Identity Resolution not working across domains",
+      "status": "Need More Information",
+      "severity": "Level 2 - Urgent",
+      "account": "TD Canada CDP",
+      "orgId": "00DDp000000g3wu",
+      "createdDate": "2026-05-22",
+      "summary": "Real-time Identity Resolution failing to unify individuals across two domains (staging website vs quoter page) despite matching First Name + Last Name + Phone. Each domain creates separate individual records with different unified IDs. Batch IDR works correctly \u2014 issue is specific to real-time streaming unification across domains. Detailed technical investigation with PII matching rules provided.",
+      "orgName": "TD Canada CDP"
+    },
+    {
+      "caseId": "500Hx00001EwQhVIAV",
+      "caseNumber": "473527010",
+      "subject": "Extension for MFA Enforcement",
+      "status": "Solution Provided",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank (CPB)",
+      "orgId": "00D1I000000oXUy",
+      "createdDate": "2026-05-21",
+      "summary": "MFA extension requested for ~20,000 user org. Current SSO (Single Sign-On) does not support MFA integration. IP restrictions and RAS token-based VPN already enforced. Collaborating with internal security teams on enterprise MFA strategy. Targeting phased enablement by end of year. Solution provided by Salesforce.",
+      "orgName": "TD CPB"
+    },
+    {
+      "caseId": "500Hx00001EgW7lIAF",
+      "caseNumber": "473509968",
+      "subject": "Prod Audit - Salesforce Advisor Portal (FSC1) - Encryption of Data at Rest",
+      "status": "Need More Information",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00D4P00000116t0",
+      "createdDate": "2026-05-20",
+      "summary": "TD requesting screenshot evidence showing encryption at rest is properly configured for Salesforce Advisor Portal (FSC1) in line with TD Data Protection guidelines. Audit compliance requirement. Awaiting information from Salesforce.",
+      "orgName": "TD US Wealth"
+    }
+  ],
+  "scorecards": [
+    {
+      "name": "TD US Commercial (00D300000001G8W)",
+      "orgId": "00D300000001G8W",
+      "successPlan": "(Core)TD Bank, N.A. - Commercial Lending",
+      "overall": 61,
+      "productAdoption": 63,
+      "technicalHealth": 32,
+      "customerExpertise": 98
+    },
+    {
+      "name": "TD Business Banking (00Df4000004l6wQ)",
+      "orgId": "00Df4000004l6wQ",
+      "successPlan": "(Core)Business Banking",
+      "overall": 55,
+      "productAdoption": 47,
+      "technicalHealth": 39,
+      "customerExpertise": 100
+    },
+    {
+      "name": "TD CPB (00D1I000000oXUy)",
+      "orgId": "00D1I000000oXUy",
+      "successPlan": "(Core)TD CPB (formerly RESL)",
+      "overall": 58,
+      "productAdoption": 52,
+      "technicalHealth": 43,
+      "customerExpertise": 93
+    },
+    {
+      "name": "TD Asset Management (TDAM)",
+      "orgId": "0010M00001RMW19",
+      "successPlan": "(Core)TDAM - TD Asset Management",
+      "overall": 64,
+      "productAdoption": 54,
+      "technicalHealth": 61,
+      "customerExpertise": 91
+    },
+    {
+      "name": "TD Canada CDP (00DDp000000g3wu)",
+      "orgId": "00DDp000000g3wu",
+      "successPlan": "Data Cloud - TD Canada",
+      "overall": 57,
+      "productAdoption": 44,
+      "technicalHealth": 52,
+      "customerExpertise": 98
+    },
+    {
+      "name": "TD US CDP (00D8c000008QbQi)",
+      "orgId": "00D8c000008QbQi",
+      "successPlan": "Data Cloud - TD US",
+      "overall": 64,
+      "productAdoption": 51,
+      "technicalHealth": 60,
+      "customerExpertise": 100
+    }
+  ],
+  "improvements": [
+    "TD US Commercial (00D300000001G8W): Technical Health critically low at 32/100. Active Sev 2 cases around Apex usage limits and security vulnerabilities. Prioritize technical debt remediation.",
+    "TD Business Banking (00Df4000004l6wQ): Overall score 55/100 is the lowest. Product Adoption at 47 and Technical Health at 39 both need focused enablement. Report validation errors actively being worked.",
+    "TD CPB (00D1I000000oXUy): Overall 58/100 with Technical Health at 43. MFA enforcement extension requested - compliance friction ongoing.",
+    "MFA Enforcement is a cross-org theme: Multiple open Sev 2 cases across US Commercial, Business Banking, US Wealth, REDS, and CPB orgs requesting MFA enforcement extensions or deferral. #1 operational concern across TD Bank.",
+    "TD Canada CDP (00DDp000000g3wu): Overall 57/100 (Good). Product Adoption lowest at 44 — needs focused enablement. Active Sev 2 cases around data retention, identity resolution failures, and upcoming production deployment.",
+    "TD US CDP (00D8c000008QbQi): Overall 64/100 (Excellent). Product Adoption at 51 is the weakest area. Data Transform failure in PROD (Sev 2) and SFTP ingestion file size limits impacting data pipeline reliability."
+  ]
+}
