@@ -291,7 +291,7 @@
 
             const renewalRows = renewals.map(r => `
                 <tr>
-                    <td>${r.name}</td>
+                    <td><a href="https://org62.lightning.force.com/lightning/r/Opportunity/${r.opportunityId}/view" target="_blank" rel="noopener" class="case-link">${r.name}</a></td>
                     <td>${r.cloud}</td>
                     <td><span class="atr-value ${r.atr > 0 ? 'atr-risk' : 'atr-zero'}">$${r.atr.toLocaleString()}</span></td>
                     <td><span class="atr-value ${r.attrForecast > 0 ? 'atr-risk' : 'atr-zero'}">$${r.attrForecast.toLocaleString()}</span></td>
