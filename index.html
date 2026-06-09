@@ -122,6 +122,15 @@
         .attrition-stat .label { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-top: 2px; }
         .quarter-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; background: #e8f5e9; color: #2e7d32; }
 
+        /* Account Overview */
+        .account-overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 16px; }
+        .ao-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 3px solid #008a00; }
+        .ao-card-header { font-size: 0.85rem; font-weight: 700; color: #004d00; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e8efe8; }
+        .ao-list { padding-left: 16px; margin: 0; }
+        .ao-list li { font-size: 0.8rem; color: #333; line-height: 1.6; margin-bottom: 8px; }
+        .ao-list li:last-child { margin-bottom: 0; }
+        .ao-list strong { color: #004d00; }
+
         /* LoB Overview */
         .lob-overview { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 4px solid #004d00; margin-bottom: 28px; }
         .lob-overview .lob-desc { font-size: 0.9rem; color: #333; line-height: 1.6; margin-bottom: 16px; }
@@ -294,14 +303,66 @@
                         <div class="days-label">Days Remaining</div>
                     </div>
                 </div>
+                ${newsHtml}
                 <div class="section">
                     <h2 class="section-title">Partnership Overview</h2>
-                    <div style="display:flex;flex-direction:column;gap:16px;">
-                        <img src="td-partnership-highlights.png" alt="TD Partnership Highlights - We Are TD's Customer Platform" style="width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
-                        <img src="td-account-overview.png" alt="TD Account Overview" style="width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+                    <img src="td-partnership-highlights.png" alt="TD Partnership Highlights - We Are TD's Customer Platform" style="width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.12);margin-bottom:16px;">
+                </div>
+                <div class="section">
+                    <h2 class="section-title">Account Overview</h2>
+                    <div class="account-overview-grid">
+                        <div class="ao-card">
+                            <div class="ao-card-header">Status of Partnership</div>
+                            <ul class="ao-list">
+                                <li><strong>Status:</strong> Green</li>
+                                <li><strong>Usage:</strong> Healthy; ~94% license activation; 84% TLP</li>
+                                <li><strong>Footprint:</strong> ~46K FSC, Shield, extensive MC, Unlimited D360, Loyalty, Tableau (50K+ users), MuleSoft ELA, Signature Success, ProServ</li>
+                                <li><strong>Whitespace:</strong> Agentforce, Mule/Info expansion, Mid-back office/Pega Replace, Contact Centre, Tellers (CPB), Insurance, Dist Mrkt, CRMA, Sales Enablement, Scheduler, Slack, Mobile App Plus, CPQ, Tableau+, Loyalty consumption, Data Mask, Privacy Center, Security Center, Apromore</li>
+                            </ul>
+                        </div>
+                        <div class="ao-card">
+                            <div class="ao-card-header">Vision / Strategy / Value Proposition</div>
+                            <ul class="ao-list">
+                                <li><strong>Vision:</strong> Deepen Relationships and drive Cost Efficiency with AgentForce</li>
+                                <li><strong>Strategy:</strong> Sr Alignment on SF's Swim Lanes, prove success with key use cases, drive towards unlimited AELA</li>
+                                <li><strong>Value Proposition:</strong> Co-existence Agent Strategy/Architecture. Leverage SF's extensive footprint to simplify and act fast within SF use cases. Once proven, expand to broader use cases</li>
+                            </ul>
+                        </div>
+                        <div class="ao-card">
+                            <div class="ao-card-header">Challenges / Issues / Roadblocks</div>
+                            <ul class="ao-list">
+                                <li>Lack of funding for "Discretionary" initiatives / Redeployment to Remediation</li>
+                                <li>AI Addendum has not yet been signed</li>
+                                <li>Move away from Platforms, back to federated model</li>
+                                <li>No CRM CoE</li>
+                            </ul>
+                        </div>
+                        <div class="ao-card">
+                            <div class="ao-card-header">TD's Priorities for this Year</div>
+                            <ul class="ao-list">
+                                <li><strong>Regulatory Remediation:</strong> Following $3B penalty for violating US AML laws. Investing ~$500M annually in US AML</li>
+                                <li><strong>Cost Takeout:</strong> $2B-$2.5B (Cnd), incl $500M from AI/process automation, cutting 2% of workforce</li>
+                                <li><strong>Digital Customer Growth:</strong> AI Transformation NPS is -26 (as of Sept 2025) with 59% detractors</li>
+                                <li><em>Note: M&A has been deprioritized</em></li>
+                            </ul>
+                        </div>
+                        <div class="ao-card">
+                            <div class="ao-card-header">Risks for FY27</div>
+                            <ul class="ao-list">
+                                <li><strong>Funding:</strong> All investments must be viewed as freeing capacity/funding for Regulator issues</li>
+                                <li><strong>Swaps:</strong> TD now in a rhythm of executing significant swaps & transfers — incredibly difficult to forecast</li>
+                                <li>Competitive Race in AI / Market differentiation</li>
+                            </ul>
+                        </div>
+                        <div class="ao-card">
+                            <div class="ao-card-header">Key Asks / Needs</div>
+                            <ul class="ao-list">
+                                <li>Continued Exec Alignment and Support (Tony/Pat & Ray)</li>
+                                <li>Top Accounts Field Marketing support/budget</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                ${newsHtml}
                 ${renewalsHtml}
                 <div class="chart-container">
                     <h2>Open Cases by Line of Business</h2>
