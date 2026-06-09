@@ -122,6 +122,15 @@
         .attrition-stat .label { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-top: 2px; }
         .quarter-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; background: #e8f5e9; color: #2e7d32; }
 
+        /* LoB Overview */
+        .lob-overview { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 4px solid #004d00; margin-bottom: 28px; }
+        .lob-overview .lob-desc { font-size: 0.9rem; color: #333; line-height: 1.6; margin-bottom: 16px; }
+        .lob-overview .lob-users { font-size: 0.85rem; color: #006400; font-weight: 600; margin-bottom: 12px; }
+        .lob-products { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .lob-products .product-tag { background: #e8f5e9; color: #2e7d32; padding: 4px 12px; border-radius: 16px; font-size: 0.75rem; font-weight: 500; }
+        .lob-usecases { padding-left: 18px; }
+        .lob-usecases li { font-size: 0.8rem; color: #555; margin-bottom: 6px; line-height: 1.4; }
+
         /* Next Best Actions */
         .nba-list { display: flex; flex-direction: column; gap: 12px; }
         .nba-item { background: white; border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #008a00; }
@@ -417,11 +426,14 @@
             const casesHtml = renderCasesTable(org.cases, orgId);
             const scorecardHtml = renderScorecardDetail(sc);
             const nbaHtml = renderNextBestActions(orgId);
+            const overviewHtml = renderLobOverview(orgId);
 
             app.innerHTML = `
                 <a class="back-link" href="#home">&larr; Back to Overview</a>
                 <h2 style="font-size:1.3rem;margin-bottom:4px;">${org.name}</h2>
                 <p style="font-size:0.8rem;color:#666;margin-bottom:24px;">Org ID: ${orgId} &bull; ${org.cases.length} open case${org.cases.length !== 1 ? 's' : ''}</p>
+
+                ${overviewHtml}
 
                 <div class="section">
                     <h2 class="section-title">Next Best Actions</h2>
@@ -510,6 +522,21 @@
                         <div class="score-bar-container"><div class="score-bar ${scoreColor(sc.customerExpertise)}" style="width:${sc.customerExpertise}%"></div></div>
                         <span class="score-value">${sc.customerExpertise}</span>
                     </div>
+                </div>
+            `;
+        }
+
+        function renderLobOverview(orgId) {
+            const lob = appData.lobOverview && appData.lobOverview[orgId];
+            if (!lob) return '';
+            const productsHtml = lob.products.map(p => `<span class="product-tag">${p}</span>`).join('');
+            const useCasesHtml = lob.useCases.map(u => `<li>${u}</li>`).join('');
+            return `
+                <div class="lob-overview">
+                    <div class="lob-users">${lob.users}</div>
+                    <div class="lob-desc">${lob.description}</div>
+                    <div class="lob-products">${productsHtml}</div>
+                    <ul class="lob-usecases">${useCasesHtml}</ul>
                 </div>
             `;
         }

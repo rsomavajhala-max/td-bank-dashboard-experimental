@@ -264,6 +264,71 @@
       "customerExpertise": 100
     }
   ],
+  "lobOverview": {
+    "00D1U000000u3xM": {
+      "name": "TD Asset Management (TDAM)",
+      "users": "~300 TD Users",
+      "description": "Retail/Wholesale Advisor Channel Management",
+      "products": ["Financial Services Cloud", "Sales Cloud"],
+      "useCases": ["Advisor Channel Management", "Client and Pipeline Management"]
+    },
+    "00D41000002likl": {
+      "name": "TD Wealth Canada (SELA)",
+      "users": "~8,000 TD Users",
+      "description": "Client and Pipeline Management tool for Advisors across 6 LOBs and Direct Invest, with Client Portal and Marketing Campaigns",
+      "products": ["Financial Services Cloud", "Experience Cloud", "Marketing Cloud", "Data Cloud"],
+      "useCases": ["Relationship Builder", "Client and Pipeline Management for Advisors (6 LOBs)", "Client Portal", "Marketing Campaigns", "Digital Onboarding"]
+    },
+    "00DDp000000g3wu": {
+      "name": "TD Canada CDP",
+      "users": "25M Unified TD Client Profiles",
+      "description": "Enterprise Data Cloud powering personalization, segmentation, identity resolution, and journey orchestration across all Canadian LOBs",
+      "products": ["Data Cloud", "Marketing Cloud", "Loyalty Management"],
+      "useCases": ["Unified Client Profiles (25M)", "Personalization & NBA/NBE", "Journey Orchestration (1,025 Journeys, 90+ Always On)", "Email Marketing (450M+ messages/year)", "Identity Resolution", "Loyalty & Offer Management"]
+    },
+    "00D8c000008QbQi": {
+      "name": "TD US CDP",
+      "users": "13M+ Visitors in US",
+      "description": "US Data Cloud org supporting personalization, lead management, and cross-sell across US retail and commercial banking",
+      "products": ["Data Cloud", "Marketing Cloud"],
+      "useCases": ["Personalization (13M+ US visitors)", "Lead Management", "Cross-Sell/Up-Sell", "SFTP Data Ingestion", "Data Transforms"]
+    },
+    "00D300000001G8W": {
+      "name": "TD US Commercial",
+      "users": "~6,000 TD Users + Online Clients & Prospects",
+      "description": "End-to-end relationship management from prospecting, account opening to onboarding. Single lending platform for both Commercial Lending and Small Business",
+      "products": ["Financial Services Cloud", "Experience Cloud", "Sales Cloud"],
+      "useCases": ["End-to-end Relationship Management", "Commercial Lending Platform", "Small Business Portal", "Client Portal", "CRM for other LOBs"]
+    },
+    "00Df4000004l6wQ": {
+      "name": "TD Business Banking",
+      "users": "4,000+ TD Users",
+      "description": "Credit & Sales platform with Relationship and Pipeline Management, Complaint Management (C86), and Experience Cloud",
+      "products": ["Financial Services Cloud", "Experience Cloud", "Sales Cloud"],
+      "useCases": ["Credit & Sales Platform", "Relationship and Pipeline Management", "Complaint Management (C86)", "Experience Cloud", "Marketing Campaign"]
+    },
+    "00D4P00000116t0": {
+      "name": "TD US Wealth",
+      "users": "~750 TD Users + Online Clients",
+      "description": "Lead Management expansion and Relationship Management across the Store network",
+      "products": ["Financial Services Cloud", "Sales Cloud"],
+      "useCases": ["Lead Management", "Relationship Management across Store Network", "Complaint Management"]
+    },
+    "00D6A000002zHJ3": {
+      "name": "TD REDS",
+      "users": "Part of ~18,000 CPB TD Users",
+      "description": "Real Estate Secured Lending — Homeowner Journey, LCT, Funding, and Case Management for operation processes",
+      "products": ["Financial Services Cloud", "Service Cloud"],
+      "useCases": ["Homeowner Journey", "LCT & Funding", "Case Management for Operations"]
+    },
+    "00D1I000000oXUy": {
+      "name": "TD CPB (Canadian Personal Banking)",
+      "users": "~18,000 TD Users + Online Clients",
+      "description": "The largest TD Salesforce org. Homeowner Journey, Case Management for Operations, and the backbone of Canadian retail banking on Salesforce",
+      "products": ["Financial Services Cloud", "Service Cloud", "Experience Cloud", "Marketing Cloud", "Shield"],
+      "useCases": ["Homeowner Journey", "LCT & Funding", "Case Management for Operations", "Tellers", "Contact Center (future)"]
+    }
+  },
   "nextBestActions": {
     "00D1U000000u3xM": [
       {
