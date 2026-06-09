@@ -409,6 +409,73 @@
       }
     ]
   },
+  "renewals": [
+    {
+      "opportunityId": "006ed00000Ni1G5AAJ",
+      "name": "The Toronto-Dominion Bank Renewal 1 Platform",
+      "account": "The Toronto-Dominion Bank",
+      "cloud": "Core",
+      "atr": 0,
+      "attrForecast": 0,
+      "closeDate": "2026-08-31",
+      "closeQuarter": "Q3",
+      "status": "Open"
+    },
+    {
+      "opportunityId": "006ed00000Ni1BFAAZ",
+      "name": "The Toronto-Dominion Bank Renewal 1 Platform",
+      "account": "The Toronto-Dominion Bank",
+      "cloud": "Core",
+      "atr": 0,
+      "attrForecast": 0,
+      "closeDate": "2026-08-31",
+      "closeQuarter": "Q3",
+      "status": "Open"
+    },
+    {
+      "opportunityId": "006ed00000NhVsxAAF",
+      "name": "The Toronto-Dominion Bank (CPB) Renewal 1 Platform",
+      "account": "The Toronto-Dominion Bank (CPB)",
+      "cloud": "Core",
+      "atr": 0,
+      "attrForecast": 0,
+      "closeDate": "2026-08-31",
+      "closeQuarter": "Q3",
+      "status": "Open"
+    },
+    {
+      "opportunityId": "006ed00000PgLmQAAV",
+      "name": "The Toronto-Dominion Bank Renewal 6 Pardot",
+      "account": "The Toronto-Dominion Bank",
+      "cloud": "Pardot",
+      "atr": 0,
+      "attrForecast": 0,
+      "closeDate": "2026-12-02",
+      "closeQuarter": "Q4",
+      "status": "Open"
+    },
+    {
+      "opportunityId": "006ed00000S96SfAAJ",
+      "name": "The Toronto-Dominion Bank Renewal 2 MuleSoft",
+      "account": "The Toronto-Dominion Bank",
+      "cloud": "Integration Cloud",
+      "atr": 7176,
+      "attrForecast": 0,
+      "closeDate": "2027-01-15",
+      "closeQuarter": "Q4",
+      "status": "Open"
+    }
+  ],
+  "attrition": [
+    {
+      "account": "The Toronto-Dominion Bank",
+      "type": "Core",
+      "amount": -6959,
+      "category": "Off-cycle / ISV Channel",
+      "closeMonth": "2026-02",
+      "leadCSM": "Annie Yang"
+    }
+  ],
   "improvements": [
     "TD US Commercial (00D300000001G8W): Technical Health critically low at 32/100. Active Sev 2 cases around Apex usage limits and security vulnerabilities. Prioritize technical debt remediation.",
     "TD Business Banking (00Df4000004l6wQ): Overall score 55/100 is the lowest. Product Adoption at 47 and Technical Health at 39 both need focused enablement. Report validation errors actively being worked.",

@@ -99,6 +99,23 @@
         .no-cases { background: #e8f5e9; padding: 20px; border-radius: 8px; text-align: center; color: #2e7d32; font-weight: 500; }
         .no-scorecard { background: #f5f5f5; padding: 16px; border-radius: 8px; color: #666; font-size: 0.85rem; }
 
+        /* Renewals & Attrition */
+        .renewals-container { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 16px; }
+        .renewals-container h3 { font-size: 0.95rem; margin-bottom: 16px; color: #333; }
+        .renewals-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        .renewals-table th { background: #004d00; color: white; padding: 10px 12px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .renewals-table td { padding: 10px 12px; border-bottom: 1px solid #e8efe8; }
+        .renewals-table tr:last-child td { border-bottom: none; }
+        .renewals-table tr:hover { background: #f4f7f4; }
+        .atr-value { font-weight: 700; }
+        .atr-zero { color: #2e7d32; }
+        .atr-risk { color: #d32f2f; }
+        .attrition-summary { display: flex; gap: 24px; margin-top: 16px; padding: 16px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #f57c00; }
+        .attrition-stat { text-align: center; }
+        .attrition-stat .number { font-size: 1.3rem; font-weight: 700; color: #d32f2f; }
+        .attrition-stat .label { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-top: 2px; }
+        .quarter-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; background: #e8f5e9; color: #2e7d32; }
+
         /* Next Best Actions */
         .nba-list { display: flex; flex-direction: column; gap: 12px; }
         .nba-item { background: white; border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #008a00; }
@@ -245,6 +262,8 @@
                 `;
             }
 
+            const renewalsHtml = renderRenewalsSection();
+
             app.innerHTML = `
                 <div class="chart-container">
                     <h2>Open Cases by Line of Business</h2>
@@ -254,10 +273,65 @@
                     <h2 class="section-title">Lines of Business</h2>
                     <div class="org-cards">${cardsHtml}</div>
                 </div>
+                ${renewalsHtml}
                 ${newsHtml}
             `;
 
             renderChart(labels, criticalCounts, urgentCounts);
+        }
+
+        function renderRenewalsSection() {
+            const renewals = appData.renewals || [];
+            const attrition = appData.attrition || [];
+            if (renewals.length === 0 && attrition.length === 0) return '';
+
+            const totalATR = renewals.reduce((sum, r) => sum + (r.atr || 0), 0);
+            const totalAttrForecast = renewals.reduce((sum, r) => sum + (r.attrForecast || 0), 0);
+            const realizedAttrition = attrition.reduce((sum, a) => sum + (a.amount || 0), 0);
+
+            const renewalRows = renewals.map(r => `
+                <tr>
+                    <td>${r.name}</td>
+                    <td>${r.cloud}</td>
+                    <td><span class="atr-value ${r.atr > 0 ? 'atr-risk' : 'atr-zero'}">$${r.atr.toLocaleString()}</span></td>
+                    <td><span class="atr-value ${r.attrForecast > 0 ? 'atr-risk' : 'atr-zero'}">$${r.attrForecast.toLocaleString()}</span></td>
+                    <td>${r.closeDate}</td>
+                    <td><span class="quarter-badge">${r.closeQuarter}</span></td>
+                </tr>
+            `).join('');
+
+            const attritionHtml = attrition.length > 0 ? `
+                <div class="attrition-summary">
+                    <div class="attrition-stat">
+                        <div class="number">$${Math.abs(realizedAttrition).toLocaleString()}</div>
+                        <div class="label">Realized Attrition (FY27)</div>
+                    </div>
+                    <div class="attrition-stat">
+                        <div class="number" style="color:#f57c00">$${totalATR.toLocaleString()}</div>
+                        <div class="label">At-Risk (ATR)</div>
+                    </div>
+                    <div class="attrition-stat">
+                        <div class="number" style="color:${totalAttrForecast > 0 ? '#d32f2f' : '#2e7d32'}">$${totalAttrForecast.toLocaleString()}</div>
+                        <div class="label">Attrition Forecast</div>
+                    </div>
+                </div>
+            ` : '';
+
+            return `
+                <div class="section">
+                    <h2 class="section-title">FY27 Renewals &amp; Attrition</h2>
+                    ${attritionHtml}
+                    <div class="renewals-container">
+                        <h3>Open Renewals</h3>
+                        <table class="renewals-table">
+                            <thead><tr>
+                                <th>Opportunity</th><th>Cloud</th><th>ATR</th><th>Forecast</th><th>Close Date</th><th>Quarter</th>
+                            </tr></thead>
+                            <tbody>${renewalRows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
         }
 
         function renderChart(labels, criticalCounts, urgentCounts) {
