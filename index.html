@@ -96,6 +96,12 @@
         .news-card a:hover { text-decoration: underline; color: #008a00; }
         .news-card .source { font-size: 0.75rem; color: #666; margin-top: 6px; }
 
+        .contract-banner { background: linear-gradient(135deg, #004d00, #008a00); border-radius: 10px; padding: 24px 32px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,100,0,0.3); }
+        .contract-banner .label { color: rgba(255,255,255,0.9); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .contract-banner .value { color: white; font-size: 1.8rem; font-weight: 800; margin-top: 4px; }
+        .contract-banner .countdown { text-align: right; }
+        .contract-banner .countdown .days { color: #ffd700; font-size: 2rem; font-weight: 800; }
+        .contract-banner .countdown .days-label { color: rgba(255,255,255,0.85); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .no-cases { background: #e8f5e9; padding: 20px; border-radius: 8px; text-align: center; color: #2e7d32; font-weight: 500; }
         .no-scorecard { background: #f5f5f5; padding: 16px; border-radius: 8px; color: #666; font-size: 0.85rem; }
 
@@ -264,7 +270,21 @@
 
             const renewalsHtml = renderRenewalsSection();
 
+            const selaExpiry = new Date('2030-10-31');
+            const today = new Date();
+            const daysRemaining = Math.ceil((selaExpiry - today) / (1000 * 60 * 60 * 24));
+
             app.innerHTML = `
+                <div class="contract-banner">
+                    <div>
+                        <div class="label">SELA Contract Expiration</div>
+                        <div class="value">October 31, 2030</div>
+                    </div>
+                    <div class="countdown">
+                        <div class="days">${daysRemaining.toLocaleString()}</div>
+                        <div class="days-label">Days Remaining</div>
+                    </div>
+                </div>
                 ${newsHtml}
                 ${renewalsHtml}
                 <div class="chart-container">
