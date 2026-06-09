@@ -265,6 +265,8 @@
             const renewalsHtml = renderRenewalsSection();
 
             app.innerHTML = `
+                ${newsHtml}
+                ${renewalsHtml}
                 <div class="chart-container">
                     <h2>Open Cases by Line of Business</h2>
                     <div class="chart-wrapper"><canvas id="cases-chart"></canvas></div>
@@ -273,8 +275,6 @@
                     <h2 class="section-title">Lines of Business</h2>
                     <div class="org-cards">${cardsHtml}</div>
                 </div>
-                ${renewalsHtml}
-                ${newsHtml}
             `;
 
             renderChart(labels, criticalCounts, urgentCounts);
