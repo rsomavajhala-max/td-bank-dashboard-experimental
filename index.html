@@ -537,7 +537,7 @@
             return `
                 <table class="cases-table">
                     <thead><tr>
-                        <th></th><th>Sev</th><th>Case #</th><th>Subject</th><th>Status</th><th>Created</th>
+                        <th></th><th>Sev</th><th>Case #</th><th>Subject</th><th>Created By</th><th>Status</th><th>Created</th>
                     </tr></thead>
                     <tbody>
                         ${cases.map((c, i) => `
@@ -546,11 +546,12 @@
                                 <td><span class="sev-badge ${sevClass(c.severity)}">${sevLabel(c.severity)}</span></td>
                                 <td><a href="https://orgcs.lightning.force.com/lightning/r/Case/${c.caseId}/view" target="_blank" rel="noopener" class="case-link" onclick="event.stopPropagation()">${c.caseNumber}</a></td>
                                 <td>${c.subject}</td>
+                                <td>${c.createdBy || '-'}</td>
                                 <td><span class="status-badge ${statusClass(c.status)}">${c.status}</span></td>
                                 <td>${c.createdDate}</td>
                             </tr>
                             <tr class="case-detail-row hidden" id="detail-${orgId}-${i}">
-                                <td colspan="6">
+                                <td colspan="7">
                                     <div class="case-summary">
                                         <div class="case-summary-label">Case Summary</div>
                                         ${c.summary || 'No summary available.'}

@@ -36,6 +36,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D1U000000u3xM",
       "createdDate": "2026-06-08",
+      "createdBy": "Srikanth Yarraguntla",
       "summary": "Auth provider token exchange failing with 'Content-Length header already present' error. Root cause identified: explicit Content-Length header in UAPAuthPlugin Apex class conflicts with new platform behavior. Fix: remove the header and let Salesforce manage it automatically. Support provided KB article reference. Next: CSM to be notified, investigating why this wasn't in release notes.",
       "orgName": "TD Asset Management (TDAM)"
     },
@@ -48,6 +49,7 @@
       "account": "TD US CDP",
       "orgId": "00D8c000008QbQi",
       "createdDate": "2026-06-08",
+      "createdBy": "TZ API User",
       "summary": "AAM MuleSoft Data Transform in PROD failing when run manually. Owner: Mohit Sharma (APAC hours). Customer (Aakash Sidana) followed up twice on June 9 requesting updates. Mohit acknowledged and is actively reviewing — promised update within 1-2 hours. Impacting customer's ability to run data transforms manually.",
       "orgName": "TD US CDP"
     },
@@ -60,6 +62,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D41000002likl",
       "createdDate": "2026-06-05",
+      "createdBy": "Trivikram Vada",
       "summary": "Deployment monitoring for Case Management enhancements (LEI links, Wealth concierge, Ticketing smartforms) via Jenkins/Dataloader. No alerts observed during EMEA monitoring hours. CSM asked customer if deployment was successful and if case can be closed. Awaiting confirmation.",
       "orgName": "TD Wealth Canada (SELA)"
     },
@@ -72,6 +75,7 @@
       "account": "TD Canada CDP",
       "orgId": "00DDp000000g3wu",
       "createdDate": "2026-06-05",
+      "createdBy": "Himanshu Chaudhari",
       "summary": "Request to apply 365-day data retention on 3 DLOs (Lead_BBCRM, Lead_PBCRM, Lead_WealthCRM). Owner: Ganeshkumar Egalapati. Initially asked for DLO type — customer (Himanshu) confirmed they are 'Other' type (not Engagement) and referenced previous case 473017899 where same was done. Ganeshkumar asked for Org ID (already provided at case creation). Customer frustrated with repeated questions. Awaiting support to apply the retention configuration.",
       "orgName": "TD Canada CDP"
     },
@@ -84,6 +88,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D300000001G8W",
       "createdDate": "2026-06-04",
+      "createdBy": "Japankumar Patel",
       "summary": "Apex usage at 98.06%, blocking development for upcoming release. Support requires PROD system admin access for 45min to run internal script checking for code hacks/misuse. Customer agreed to grant 1-hour access with a live call. Limit increase requires PM verification and sanity checks \u2014 not an emergency change.",
       "orgName": "TD US Commercial"
     },
@@ -96,6 +101,7 @@
       "account": "TD US CDP",
       "orgId": "00D8c000008QbQi",
       "createdDate": "2026-06-03",
+      "createdBy": "Alekya Mukka",
       "summary": "Source system cannot split files and exceeds the 2GB SFTP ingestion limit in Data Cloud. Owner: Ganeshkumar Egalapati. Solution provided: 2GB is a hard platform limit per file and cannot be increased. Customer needs to work with source system to split files. Reference: Data 360 Limits and Guidelines article.",
       "orgName": "TD US CDP"
     },
@@ -108,6 +114,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00Df4000004l6wQ",
       "createdDate": "2026-06-02",
+      "createdBy": "Keith O'Rourke",
       "summary": "Validation error on report component (BusinessAdministratorReports/BBHUB_Duplicate_accounts_Report) in cicd26pi2 sandbox. Support unable to query org directly due to access restrictions. Customer emptied recycle bin on CICD26PI2 and ESIT sandboxes. Support checking if issue persists and investigating physical delete process.",
       "orgName": "TD Business Banking"
     },
@@ -120,6 +127,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D300000001G8W",
       "createdDate": "2026-05-28",
+      "createdBy": "Japankumar Patel",
       "summary": "Two vulnerabilities flagged: (1) Lucky13 \u2014 servers using CBC mode ciphers susceptible to attack; (2) Missing HttpOnly flag on cookies allowing client-side JS access. Customer requesting Salesforce assistance to remediate. Awaiting additional information.",
       "orgName": "TD US Commercial"
     },
@@ -132,6 +140,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D4P00000116t0",
       "createdDate": "2026-05-28",
+      "createdBy": "Prashanth Anugu",
       "summary": "TD seeking guidance on Hyperforce migration impact: community portal connections, API integrations, SF-to-SF connections with commercial org, connected apps, managed packages. Also asking about documentation listing all impacted functionalities. Awaiting Salesforce responses.",
       "orgName": "TD US Wealth"
     },
@@ -144,6 +153,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D4P00000116t0",
       "createdDate": "2026-05-28",
+      "createdBy": "Prashanth Anugu",
       "summary": "Requesting 3-month MFA exemption (until October) for all US Wealth orgs across 4 enforcement areas: employee MFA, phishing-resistant admin MFA, report action step-up auth, and anomalous report export verification. Internal architects evaluating PingFed integration. Discussed with Salesforce team on 05/27 call.",
       "orgName": "TD US Wealth"
     },
@@ -156,6 +166,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D6A000002zHJ3",
       "createdDate": "2026-05-27",
+      "createdBy": "Ermal Kenaci",
       "summary": "Requesting 90-day deferral for MFA enforcement on TDS Org (00D6A000002zHJ3). Sandbox enforcement June 2026, production July 2026. Deferral needed for controlled rollout aligned with TD enterprise-wide PingFed/Windows Hello implementation. Targeting phased enablement by end of year.",
       "orgName": "TD REDS"
     },
@@ -168,6 +179,7 @@
       "account": "TD Canada CDP",
       "orgId": "00DDp000000g3wu",
       "createdDate": "2026-05-26",
+      "createdBy": "Kshitij Bhanot",
       "summary": "Production deployment for Refer a Friend scheduled June 10, 11 PM EST (TODAY). 24/7 proactive monitoring active since May 27 with global handovers (APAC→EMEA→AMER). No alerts triggered across any GEO since monitoring began. Source: 00DDk00000014X7 → Target: 00DDp000000g3wu. Tool: Jenkins with Quick Deploy. Contact: Kshitij Bhanot. Estimated 2-3 hours execution.",
       "orgName": "TD Canada CDP"
     },
@@ -180,6 +192,7 @@
       "account": "TD Canada CDP",
       "orgId": "00DDp000000g3wu",
       "createdDate": "2026-05-22",
+      "createdBy": "Himanshu Chaudhari",
       "summary": "Real-time IDR failing to unify individuals across two domains (staging website vs quoter page) despite matching First Name + Last Name + Phone. Owner: Clay Warnick (Sr. Data Cloud TSE). Product team investigating \u2014 believed to be a race condition on Real-time IR processing events landing close together. Workaround: sending all attributes on a single event helps. Awaiting Real-time IR team analysis. Customer's TA (Satya Mukherjee) demoed issue in sandbox.",
       "orgName": "TD Canada CDP"
     },
@@ -192,6 +205,7 @@
       "account": "The Toronto-Dominion Bank (CPB)",
       "orgId": "00D1I000000oXUy",
       "createdDate": "2026-05-21",
+      "createdBy": "Akshada Durve",
       "summary": "MFA extension requested for ~20,000 user org. Current SSO (Single Sign-On) does not support MFA integration. IP restrictions and RAS token-based VPN already enforced. Collaborating with internal security teams on enterprise MFA strategy. Targeting phased enablement by end of year. Solution provided by Salesforce.",
       "orgName": "TD CPB"
     },
@@ -204,6 +218,7 @@
       "account": "The Toronto-Dominion Bank",
       "orgId": "00D4P00000116t0",
       "createdDate": "2026-05-20",
+      "createdBy": "Prashanth Anugu",
       "summary": "TD requesting screenshot evidence showing encryption at rest is properly configured for Salesforce Advisor Portal (FSC1) in line with TD Data Protection guidelines. Audit compliance requirement. Awaiting information from Salesforce.",
       "orgName": "TD US Wealth"
     }
