@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-08T16:00:00Z",
+  "lastUpdated": "2026-06-09T20:30:00Z",
   "news": [
     {
       "title": "TD Ranks #1 in Customer Satisfaction with Mobile Banking Apps in JD Power 2026 Canada Study",
@@ -43,12 +43,12 @@
       "caseId": "500Hx00001H47evIAB",
       "caseNumber": "473704248",
       "subject": "Data Transform failure in PROD",
-      "status": "New",
+      "status": "Working",
       "severity": "Level 2 - Urgent",
       "account": "TD US CDP",
       "orgId": "00D8c000008QbQi",
       "createdDate": "2026-06-08",
-      "summary": "AAM MuleSoft Data Transform in PROD failing with no detailed error message when run manually. Customer has provided screenshot and granted org access. Support manager acknowledged and assigned team. Awaiting initial investigation.",
+      "summary": "AAM MuleSoft Data Transform in PROD failing when run manually. Owner: Mohit Sharma (APAC hours). Customer (Aakash Sidana) followed up twice on June 9 requesting updates. Mohit acknowledged and is actively reviewing — promised update within 1-2 hours. Impacting customer's ability to run data transforms manually.",
       "orgName": "TD US CDP"
     },
     {
@@ -72,7 +72,7 @@
       "account": "TD Canada CDP",
       "orgId": "00DDp000000g3wu",
       "createdDate": "2026-06-05",
-      "summary": "Request to apply 365-day data retention on 3 DLOs (Lead_BBCRM, Lead_PBCRM, Lead_WealthCRM) using CreatedDate as EventTime field. Org ID confirmed as 00DDp000000g3wu (PROD). Support proceeding with configuration.",
+      "summary": "Request to apply 365-day data retention on 3 DLOs (Lead_BBCRM, Lead_PBCRM, Lead_WealthCRM). Owner: Ganeshkumar Egalapati. Initially asked for DLO type — customer (Himanshu) confirmed they are 'Other' type (not Engagement) and referenced previous case 473017899 where same was done. Ganeshkumar asked for Org ID (already provided at case creation). Customer frustrated with repeated questions. Awaiting support to apply the retention configuration.",
       "orgName": "TD Canada CDP"
     },
     {
@@ -96,7 +96,7 @@
       "account": "TD US CDP",
       "orgId": "00D8c000008QbQi",
       "createdDate": "2026-06-03",
-      "summary": "Source system cannot split files and exceeds the 2GB SFTP ingestion limit in Data Cloud. Customer requested urgent limit increase. Solution has been provided by support.",
+      "summary": "Source system cannot split files and exceeds the 2GB SFTP ingestion limit in Data Cloud. Owner: Ganeshkumar Egalapati. Solution provided: 2GB is a hard platform limit per file and cannot be increased. Customer needs to work with source system to split files. Reference: Data 360 Limits and Guidelines article.",
       "orgName": "TD US CDP"
     },
     {
@@ -162,13 +162,13 @@
     {
       "caseId": "500Hx00001FN8rnIAD",
       "caseNumber": "473562076",
-      "subject": "Notification of Upcoming Production Deployment - Refer a Friend Capability (June 10)",
+      "subject": "Notification of Upcoming Production Deployment – Refer a Friend Capability (June 10)",
       "status": "Working",
       "severity": "Level 2 - Urgent",
       "account": "TD Canada CDP",
       "orgId": "00DDp000000g3wu",
       "createdDate": "2026-05-26",
-      "summary": "Major production deployment for Refer a Friend capability scheduled June 10. Customer notifying support team in advance and requesting standby availability in case issues arise during or post-deployment.",
+      "summary": "Production deployment for Refer a Friend scheduled June 10, 11 PM EST (TODAY). 24/7 proactive monitoring active since May 27 with global handovers (APAC→EMEA→AMER). No alerts triggered across any GEO since monitoring began. Source: 00DDk00000014X7 → Target: 00DDp000000g3wu. Tool: Jenkins with Quick Deploy. Contact: Kshitij Bhanot. Estimated 2-3 hours execution.",
       "orgName": "TD Canada CDP"
     },
     {
@@ -180,7 +180,7 @@
       "account": "TD Canada CDP",
       "orgId": "00DDp000000g3wu",
       "createdDate": "2026-05-22",
-      "summary": "Real-time Identity Resolution failing to unify individuals across two domains (staging website vs quoter page) despite matching First Name + Last Name + Phone. Each domain creates separate individual records with different unified IDs. Batch IDR works correctly \u2014 issue is specific to real-time streaming unification across domains. Detailed technical investigation with PII matching rules provided.",
+      "summary": "Real-time IDR failing to unify individuals across two domains (staging website vs quoter page) despite matching First Name + Last Name + Phone. Owner: Clay Warnick (Sr. Data Cloud TSE). Product team investigating \u2014 believed to be a race condition on Real-time IR processing events landing close together. Workaround: sending all attributes on a single event helps. Awaiting Real-time IR team analysis. Customer's TA (Satya Mukherjee) demoed issue in sandbox.",
       "orgName": "TD Canada CDP"
     },
     {
