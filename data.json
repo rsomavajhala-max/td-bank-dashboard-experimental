@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-11T17:30:00Z",
+  "lastUpdated": "2026-06-12T13:30:00Z",
   "news": [
     {
       "title": "TD Ranks #1 in Customer Satisfaction with Mobile Banking Apps in JD Power 2026 Canada Study",
@@ -40,6 +40,39 @@
       "orgName": "TD Asset Management (TDAM)"
     },
     {
+      "caseId": "500Hx00001HZUTxIAP",
+      "caseNumber": "473777322",
+      "subject": "Intermittent issue in auto-generation of Credit Memo documents",
+      "status": "New",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank",
+      "orgId": "00Df4000004l6wQ",
+      "createdDate": "2026-06-12",
+      "orgName": "TD Business Banking"
+    },
+    {
+      "caseId": "500Hx00001HSdIgIAL",
+      "caseNumber": "473760785",
+      "subject": "Emails not working on Hyperforce Sandbox",
+      "status": "Need More Information",
+      "severity": "Level 2 - Urgent",
+      "account": "The Toronto-Dominion Bank (CPB)",
+      "orgId": "00D1I000000oXUy",
+      "createdDate": "2026-06-11",
+      "orgName": "TD CPB"
+    },
+    {
+      "caseId": "500Hx00001HM0BxIAL",
+      "caseNumber": "473744923",
+      "subject": "Data Stream Status \"Processing\"",
+      "status": "Solution Provided",
+      "severity": "Level 2 - Urgent",
+      "account": "TD US CDP",
+      "orgId": "00D8c000008QbQi",
+      "createdDate": "2026-06-10",
+      "orgName": "TD US CDP"
+    },
+    {
       "caseId": "500Hx00001HL6GDIA1",
       "caseNumber": "473742866",
       "subject": "Request for Courtesy Increase – Daily CSV Output Limit (6 GB/day → 14 GB/day)",
@@ -60,17 +93,6 @@
       "orgId": "00D300000001G8W",
       "createdDate": "2026-06-09",
       "orgName": "TD US Commercial"
-    },
-    {
-      "caseId": "500Hx00001H9wLqIAJ",
-      "caseNumber": "473719945",
-      "subject": "Physical Delete Execution | BBHUB June Release | June 9-11, 2026",
-      "status": "Solution Provided",
-      "severity": "Level 2 - Urgent",
-      "account": "The Toronto-Dominion Bank",
-      "orgId": "00Df4000004l6wQ",
-      "createdDate": "2026-06-09",
-      "orgName": "TD Business Banking"
     },
     {
       "caseId": "500Hx00001HA2awIAD",
@@ -94,18 +116,6 @@
       "createdDate": "2026-06-08",
       "summary": "AAM MuleSoft Data Transform in PROD failing when run manually. Owner: Mohit Sharma. Customer followed up twice requesting updates. Actively being reviewed.",
       "orgName": "TD US CDP"
-    },
-    {
-      "caseId": "500Hx00001GliyLIAR",
-      "caseNumber": "473663520",
-      "subject": "Deployment monitoring Request (June 5-6, 2026)",
-      "status": "Need More Information",
-      "severity": "Level 2 - Urgent",
-      "account": "The Toronto-Dominion Bank",
-      "orgId": "00D41000002likl",
-      "createdDate": "2026-06-05",
-      "summary": "Deployment monitoring for Case Management enhancements. No alerts observed. Awaiting customer confirmation to close.",
-      "orgName": "TD Wealth Canada (SELA)"
     },
     {
       "caseId": "500Hx00001Gbs1JIAR",
@@ -143,18 +153,6 @@
       "orgName": "TD Business Banking"
     },
     {
-      "caseId": "500Hx00001FfTcnIAF",
-      "caseNumber": "473580757",
-      "subject": "Queries related to Hyperforce migration",
-      "status": "Need More Information",
-      "severity": "Level 2 - Urgent",
-      "account": "The Toronto-Dominion Bank",
-      "orgId": "00D4P00000116t0",
-      "createdDate": "2026-05-28",
-      "summary": "TD seeking guidance on Hyperforce migration impact: community portal connections, API integrations, SF-to-SF connections with commercial org, connected apps, managed packages. Awaiting Salesforce responses.",
-      "orgName": "TD US Wealth"
-    },
-    {
       "caseId": "500Hx00001FfA2HIAV",
       "caseNumber": "473580614",
       "subject": "Please exempt mfa enablements for 3 months for our US Wealth orgs",
@@ -189,18 +187,6 @@
       "createdDate": "2026-05-22",
       "summary": "Real-time IDR failing across two domains. Product team investigating race condition on RT IR processing. Workaround: sending all attributes on single event helps.",
       "orgName": "TD Canada CDP"
-    },
-    {
-      "caseId": "500Hx00001EwQhVIAV",
-      "caseNumber": "473527010",
-      "subject": "Extension for MFA Enforcement",
-      "status": "Solution Provided",
-      "severity": "Level 2 - Urgent",
-      "account": "The Toronto-Dominion Bank (CPB)",
-      "orgId": "00D1I000000oXUy",
-      "createdDate": "2026-05-21",
-      "summary": "MFA extension requested for ~20,000 user org. Solution provided by Salesforce. Targeting phased enablement by end of year.",
-      "orgName": "TD CPB"
     }
   ],
   "scorecards": [
@@ -288,14 +274,14 @@
   ],
   "improvements": [
     "TD Asset Management (TDAM): L1 Critical case still open — Http callout failure in Production due to Content-Length header conflict. Root cause identified, fix provided. Awaiting customer implementation.",
-    "TD US Commercial (00D300000001G8W): Technical Health critically low at 32/100. Apex usage at 98% blocking development. Hyperforce org routing enablement active. Also has separate L1 Critical MuleSoft API case (473740517) with 'Remotely Closed' errors traced to Evergage LB dropping TCP connections.",
-    "TD Business Banking (00Df4000004l6wQ): Overall score 55/100 lowest across all orgs. 5 active cases: BBHUB deployment monitoring TONIGHT (June 11-12), Physical Delete execution completed, MFA extension request, report validation issue.",
-    "TD Canada CDP (00DDp000000g3wu): CSV output limit increase request (6→14 GB/day) opened June 10. Real-time IDR race condition still under product team investigation.",
-    "TD US CDP (00D8c000008QbQi): Data Transform PROD failure in 'Need More Information' status — awaiting customer response.",
-    "TD CPB (00D1I000000oXUy): Overall 58/100 with Technical Health at 43. MFA extension solution provided for ~20K user org.",
-    "TD Wealth Canada - SELA (00D41000002likl): Technical Health at 47/100. Deployment monitoring case awaiting closure confirmation.",
-    "TD US Wealth (00D4P00000116t0): Customer Expertise critically low at 35/100. Hyperforce migration questions and 3-month MFA exemption requests pending.",
+    "TD Business Banking (00Df4000004l6wQ): Overall score 55/100 lowest across all orgs. NEW case today: intermittent Credit Memo auto-generation failure (473777322). 4 active cases total including BBHUB deployment monitoring, MFA extension, and report validation.",
+    "TD US Commercial (00D300000001G8W): Technical Health critically low at 32/100. Apex usage at 98% blocking development. Hyperforce org routing enablement active. Also has L1 Critical MuleSoft API case (473740517) — Evergage LB dropping TCP connections causing 'Remotely Closed' errors.",
+    "TD CPB (00D1I000000oXUy): NEW case: Emails not working on Hyperforce Sandbox (473760785, June 11). Overall 58/100 with Technical Health at 43. MFA extension case resolved.",
+    "TD US CDP (00D8c000008QbQi): NEW case: Data Stream stuck in 'Processing' status (473744923) — solution provided. Data Transform PROD failure still in 'Need More Information'.",
+    "TD Canada CDP (00DDp000000g3wu): CSV output limit increase request (6→14 GB/day) active. Real-time IDR race condition still under product team investigation.",
+    "TD US Wealth (00D4P00000116t0): Customer Expertise critically low at 35/100. 3-month MFA exemption request still pending. Hyperforce migration queries case resolved.",
     "TD REDS (00D6A000002zHJ3): 90-day MFA deferral in progress. Sandbox enforcement imminent (June 2026), production July 2026.",
-    "MFA Enforcement cross-org theme: Active cases across REDS, CPB, US Wealth, and Business Banking requesting MFA enforcement extensions/deferrals."
+    "4 cases resolved since last refresh: Physical Delete BBHUB (BB), Deployment monitoring June 5-6 (SELA), Hyperforce migration queries (US Wealth), MFA Extension (CPB).",
+    "MFA Enforcement cross-org theme: Active cases across REDS, US Wealth, and Business Banking requesting MFA enforcement extensions/deferrals."
   ]
 }
